@@ -1,0 +1,28 @@
+//TC = O(n)  n-> nodes
+//SC = O(n)
+
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        
+        if(root == null){
+            return true;
+        }
+        
+        return isSymmetric(root.left, root.right);
+    }
+    
+    //a = actual image, m = mirror image
+    private boolean isSymmetric(TreeNode a, TreeNode m){
+        
+        if(a == null && m == null){
+            return true;
+        }
+        
+        if(a == null || m == null || a.val != m.val){
+            return false;
+        }
+        
+        return isSymmetric(a.left, m.right) && isSymmetric(a.right, m.left);
+        
+    }
+}
